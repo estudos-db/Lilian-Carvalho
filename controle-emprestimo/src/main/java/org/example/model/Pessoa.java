@@ -7,7 +7,8 @@ public class Pessoa {
 	private static long sequence = 1;
 	private long id;
 	private String nome;
-	private Set<Livro> livrosPegosEmprestados;
+	private Set<Livro> livrosPegosEmprestados = new HashSet<>();
+
 
 	public Pessoa(String nome) {
 		this.nome = nome;
