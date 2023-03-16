@@ -50,7 +50,7 @@ public class BibliotecaServices {
 			System.out.format("\n\n%-3s %-30s", "ID", "NOME");
 			this.clientesCadastrados.forEach(
 					cliente -> System.out.format("\n%-3s %-30s", cliente.getId(), cliente.getNome()));
-		} catch (ExceptionLivro nenhumClienteCadastrado) {
+		} catch (ExceptionCliente nenhumClienteCadastrado) {
 			System.out.println(nenhumClienteCadastrado.getMessage());
 		}
 	}
@@ -70,7 +70,7 @@ public class BibliotecaServices {
 				return livro;
 			}
 		}
-		throw new ExceptionCliente("Cliente não cadastrado");
+		throw new ExceptionLivro("Cliente não cadastrado");
 	}
 
 	public void realizarEmprestimo(long idCliente, long idLivro) {
