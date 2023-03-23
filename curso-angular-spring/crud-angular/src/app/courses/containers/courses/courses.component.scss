@@ -1,0 +1,18 @@
+mat-card {
+  padding: 1em;
+  max-width: 80vw;
+  margin: 2em auto;
+  text-align: center;
+}
+.column-flex {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.15);
+  padding: 25px;
+}
