@@ -2,45 +2,40 @@ package com.example.hrminseg.services;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class ConversorTest {
 
+	private static final int TEMPO_PARA_CALCULAR = 7023;
 	private static int horas;
 	private static int minutos;
-	private static int segundos;
-
-	@BeforeAll
-	public static void init() {
-		horas = Conversor.calcularHoras(7023);
-		Conversor.setHoras(horas);
-		minutos = Conversor.calcularMinutos(7023);
-		Conversor.setMinutos(minutos);
-		segundos = Conversor.calcularSegundos(7023);
-		Conversor.setSegundos(minutos);
-	}
 
 	@Test
 	void deveCalcularHoras() {
 		int expect = 1;
-		int actual = horas;
+		int actual = Conversor.calcularHoras(TEMPO_PARA_CALCULAR);
 
 		assertEquals(expect, actual);
 	}
 
 	@Test
 	void deveCalcularMinutos() {
+		horas = Conversor.calcularHoras(TEMPO_PARA_CALCULAR);
+		Conversor.setHoras(horas);
 		int expect = 57;
-		int actual = minutos;
+		int actual = Conversor.calcularMinutos(TEMPO_PARA_CALCULAR);
 
 		assertEquals(expect, actual);
 	}
 
 	@Test
 	void deveCalcularSegundos() {
+		horas = Conversor.calcularHoras(TEMPO_PARA_CALCULAR);
+		Conversor.setHoras(horas);
+		minutos = Conversor.calcularMinutos(TEMPO_PARA_CALCULAR);
+		Conversor.setMinutos(minutos);
 		int expect = 3;
-		int actual = segundos;
+		int actual = Conversor.calcularSegundos(TEMPO_PARA_CALCULAR);
 
 		assertEquals(expect, actual);
 	}

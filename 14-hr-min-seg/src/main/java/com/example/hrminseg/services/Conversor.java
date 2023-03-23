@@ -2,7 +2,7 @@ package com.example.hrminseg.services;
 
 import java.util.Scanner;
 
-public class Conversor {
+public abstract class Conversor {
 
 	private static final Scanner scanner = new Scanner(System.in);
 	private static int segundos;
