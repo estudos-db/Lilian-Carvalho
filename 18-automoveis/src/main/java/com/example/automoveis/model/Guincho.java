@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class Guincho extends Automovel {
 
-	private Set<Automovel> carregando = new HashSet<>();
+	private Set<Automovel> veiculosCarregados = new HashSet<>();
 	private boolean carregado;
 
 	public Guincho(int numRodas, int velMax) {
@@ -15,8 +15,8 @@ public class Guincho extends Automovel {
 
 	public boolean carregar(Automovel automovel) {
 		if (!this.carregado) {
-			this.carregando.add(automovel);
-			return this.carregado = !this.carregado;
+			this.veiculosCarregados.add(automovel);
+			return this.carregado = true;
 		}
 		return false;
 	}

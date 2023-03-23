@@ -2,41 +2,37 @@ package com.example.automoveis.model;
 
 public abstract class Automovel {
 
-	private boolean acelerador;
-	private boolean ligado;
-	private boolean freio;
+	private boolean isAcelerado;
+	private boolean isLigado;
+	private boolean isFreioPressiondo;
 	private int numRodas;
 	private int velMax;
 
 	public Automovel(int numRodas, int velMax) {
 		this.numRodas = numRodas;
-		this.acelerador = false;
+		this.isAcelerado = false;
 		this.velMax = velMax;
-		this.ligado = false;
-		this.freio = false;
+		this.isLigado = false;
+		this.isFreioPressiondo = false;
 	}
 
-	public boolean acelerador() {
-		return acelerador;
+	public boolean isAcelerado() {
+		return isAcelerado;
 	}
-
 	public boolean isLigado() {
-		return ligado;
+		return isLigado;
 	}
-
 	public boolean isFreioPressiondo() {
-		return freio;
+		return isFreioPressiondo;
 	}
-
 	public boolean ligar() {
-		return this.ligado = !this.ligado;
+		return this.isLigado = true;
 	}
-
 	public boolean freiar() {
-		return this.freio = !this.freio;
+		return this.isFreioPressiondo = true;
 	}
 
 	public boolean acelerar() {
-		return this.acelerador = !this.acelerador;
+		return this.isAcelerado = true;
 	}
 }

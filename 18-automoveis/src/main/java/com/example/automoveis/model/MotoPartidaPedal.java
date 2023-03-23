@@ -8,7 +8,7 @@ public class MotoPartidaPedal extends Moto {
 
 	@Override
 	public boolean ligar() {
-		if (this.acelerador()) {
+		if (this.isAcelerado()) {
 			return super.ligar();
 		}
 		return this.isLigado();
