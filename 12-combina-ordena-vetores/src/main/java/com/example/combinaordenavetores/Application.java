@@ -12,12 +12,15 @@ public class Application {
 	public static void main(String[] args) {
 		int[] vetor1 = GeraVetor.gerarVetor(50);
 		int[] vetor2 = GeraVetor.gerarVetor(50);
-		System.out.println(Arrays.toString(vetor1));
-		System.out.println(Arrays.toString(vetor2));
+		System.out.println("Vetor 01: " + Arrays.toString(vetor1));
+		System.out.println("Vetor 01 Ordenado: " + Arrays.toString(OrdenaVetor.ordenarVetor(vetor1)));
+		System.out.println("Vetor 02: " + Arrays.toString(vetor2));
+		System.out.println("Vetor 02 Ordenado: " + Arrays.toString(OrdenaVetor.ordenarVetor(vetor2)));
 
-		System.out.println(Arrays.toString(CombinaVetores.combinarVetores(vetor1, vetor2)));
 		System.out.println(
-				Arrays.toString(OrdenaVetor.ordenarVetor(CombinaVetores.combinarVetores(vetor1, vetor2))));
+				"Vetor 01 + Vetor 02: " + Arrays.toString(CombinaVetores.combinarVetores(vetor1, vetor2)));
+		System.out.println("Vetor 01 + Vetor 02 Ordenado: " + Arrays.toString(
+				OrdenaVetor.ordenarVetor(CombinaVetores.combinarVetores(vetor1, vetor2))));
 
 	}
 
