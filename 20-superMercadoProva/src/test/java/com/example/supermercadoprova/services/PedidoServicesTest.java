@@ -86,9 +86,8 @@ class PedidoServicesTest {
 		ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 		System.setOut(new PrintStream(outContent));
 		PedidoServices.imprimePedido();
-		String expect = "Nenhum produto adicionado ao carrinho!\n";
 
-		assertEquals(expect, outContent.toString());
+		assertEquals("Nenhum produto adicionado ao carrinho!\n", outContent.toString());
 	}
 
 	@Test
@@ -110,9 +109,8 @@ class PedidoServicesTest {
 		PedidoServices.adicionarItemNaLista(foneDeOuvido, 1);
 		PedidoServices.adicionarItemNaLista(mouse, 1);
 		PedidoServices.calcularValorTotal();
-		String expect = "Valor pago é insuficiente!";
 
-		assertEquals(expect, PedidoServices.calculaTroco(50));
+		assertEquals("Valor pago é insuficiente!", PedidoServices.calculaTroco(50));
 	}
 
 }

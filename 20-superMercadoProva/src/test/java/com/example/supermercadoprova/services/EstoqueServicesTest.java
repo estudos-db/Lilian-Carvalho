@@ -122,7 +122,6 @@ class EstoqueServicesTest {
 		int actual = EstoqueServices.getPosicaoDoProdutoNaLista(teclado);
 		System.out.println(actual);
 
-//		assertEquals(0, );
 		assertEquals(1, EstoqueServices.getPosicaoDoProdutoNaLista(mouse));
 	}
 
