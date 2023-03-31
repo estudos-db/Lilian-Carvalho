@@ -3,7 +3,6 @@ package com.example.supermercadoprova.services;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.when;
 
 import com.example.supermercadoprova.model.Produto;
 import java.io.ByteArrayOutputStream;
@@ -104,7 +103,8 @@ class PedidoServicesTest {
 	}
 
 	@Test
-	@DisplayName("Deve informar que o valor pago não é suficiente caso seja menor que o valor do " + "pedido")
+	@DisplayName(
+			"Deve informar que o valor pago não é suficiente caso seja menor que o valor do " + "pedido")
 	void calculaTrocoValorPagoInsuficiente() {
 		PedidoServices.adicionarItemNaLista(foneDeOuvido, 1);
 		PedidoServices.adicionarItemNaLista(mouse, 1);
@@ -113,4 +113,20 @@ class PedidoServicesTest {
 		assertEquals("Valor pago é insuficiente!", PedidoServices.calculaTroco(50));
 	}
 
+	@Test
+	@DisplayName("Deve reduzir a quantidade de produtos no estoque ao finalizar pedido")
+	void finalizarPedido() {
+		EstoqueServices.cadastrarProduto(foneDeOuvido);
+		EstoqueServices.cadastrarProduto(mouse);
+
+		PedidoServices.adicionarItemNaLista(foneDeOuvido, 5);
+		PedidoServices.adicionarItemNaLista(mouse, 7);
+
+		PedidoServices.finalizarPedido();
+
+		assertEquals(4, EstoqueServices.getQuantidadeAtualEmEstoque(foneDeOuvido));
+		assertEquals(6, EstoqueServices.getQuantidadeAtualEmEstoque(mouse));
+
+
+	}
 }
