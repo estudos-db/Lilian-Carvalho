@@ -1,5 +1,7 @@
 package com.example.supermercadoprova.services;
 
+import static java.lang.System.out;
+
 import com.example.supermercadoprova.model.Estoque;
 import com.example.supermercadoprova.model.Produto;
 import java.util.Objects;
@@ -16,6 +18,17 @@ public abstract class EstoqueServices {
 		              .orElse(null);
 	}
 
+	public static void exibirProduto(Produto produto) {
+		if (produto != null) {
+			out.format("%-5s %-30s %-10s %-10s", "ID", "PRODUTO", "PREÇO", "QUANTIDADE");
+			out.format("\n%-5s %-30s %-10s %-10s", produto.getId(), produto.getNome(),
+			           produto.getPreco(),
+			           produto.getQuantidadeEmEstoque());
+		} else {
+			out.println("Produto não encontrado!");
+		}
+	}
+
 	public static Produto encontraProdutoID(int id) {
 		return estoque.getListaDeProdutos()
 		              .stream()
@@ -29,11 +42,12 @@ public abstract class EstoqueServices {
 	}
 
 	public static void imprimirCatalagoDoEstoque() {
-		System.out.format("%-5s %-30s %-10s %-10s", "ID", "PRODUTO", "PREÇO", "QUANTIDADE");
+		out.format("%-5s %-30s %-10s %-10s", "ID", "PRODUTO", "PREÇO", "QUANTIDADE");
 		estoque.getListaDeProdutos()
-		       .forEach(produto -> System.out.format("\n%-5s %-30s %-10s %-10s", produto.getId(),
-		                                             produto.getNome(), produto.getPreco(),
-		                                             produto.getQuantidadeEmEstoque()));
+		       .forEach(
+				       produto -> out.format("\n%-5s %-30s %-10s %-10s", produto.getId(),
+				                             produto.getNome(),
+				                             produto.getPreco(), produto.getQuantidadeEmEstoque()));
 
 	}
 
