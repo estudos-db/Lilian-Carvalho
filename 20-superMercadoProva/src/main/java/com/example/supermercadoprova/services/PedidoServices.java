@@ -34,7 +34,7 @@ public abstract class PedidoServices {
 
 	public static void imprimePedido() {
 		if (pedido.getListaDeItens().isEmpty()) {
-			out.print("Nenhum produto adicionado ao carrinho!");
+			out.print("Nenhum produto adicionado ao carrinho!\n");
 		} else {
 			out.format("%-30s %-15s %-15s %-15s", "NOME", "VALOR UNID.", "QUANTIDADE", "VALOR TOTAL");
 			pedido.getListaDeItens()
@@ -71,7 +71,7 @@ public abstract class PedidoServices {
 		int[] notasDisponiveis = {200, 100, 50, 20, 10, 5, 2};
 		int[] quantidadeNotas = new int[notasDisponiveis.length];
 
-		String result = "";
+		StringBuilder result = new StringBuilder();
 
 		for (int i = 0; i < notasDisponiveis.length; i++) {
 			while (pedido.getValorTroco() >= notasDisponiveis[i]) {
@@ -81,24 +81,28 @@ public abstract class PedidoServices {
 		}
 		int index = 0;
 		for (int contQuantidade : quantidadeNotas) {
-			if (quantidadeNotas[index] != 0) {
-				result =
-						result + quantidadeNotas[index] + " nota(s) de R$ " + notasDisponiveis[index] + "\n";
+			out.println("contQuantidade: " + contQuantidade);
+			out.println("index: " + index);
+			if (contQuantidade > 0) {
+				result.append(contQuantidade)
+				      .append(" nota(s) de R$ ")
+				      .append(notasDisponiveis[index])
+				      .append("\n");
 			}
 			index++;
 		}
 
-		return result;
+		return result.toString();
 	}
 
 	public static String calculaMenorQuantidadeDeMoedas() {
 		int[] moedasDisponiveis = {100, 50, 25, 10, 5};
 		int[] quantidadeMoedas = new int[moedasDisponiveis.length];
 
-		String result = "";
+		StringBuilder result = new StringBuilder();
 
 		if (pedido.getValorTroco() > 1) {
-			result = result + "1 moeda(s) de R$ 1\n";
+			result.append("1 moeda(s) de R$ 1\n");
 		}
 		int valorCentavos = (int) Math.round(
 				(pedido.getValorTroco() - (int) pedido.getValorTroco()) * 100);
@@ -110,13 +114,17 @@ public abstract class PedidoServices {
 		}
 		int index = 0;
 		for (int contQuantidade : quantidadeMoedas) {
-			if (quantidadeMoedas[contQuantidade] != 0) {
-				result = result + quantidadeMoedas[index] + " moeda(s) de " + moedasDisponiveis[index]
-						         + " centavos\n";
+			out.println("contQuantidade 2: " + contQuantidade);
+			out.println("index 2: " + index);
+			if (contQuantidade > 0) {
+				result.append(contQuantidade)
+				      .append(" moeda(s) de ")
+				      .append(moedasDisponiveis[index])
+				      .append(" centavos\n");
 			}
 			index++;
 		}
-		return result;
+		return result.toString();
 	}
 
 	public static Pedido getPedido() {
