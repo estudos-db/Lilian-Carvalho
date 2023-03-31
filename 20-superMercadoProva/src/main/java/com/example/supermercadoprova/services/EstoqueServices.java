@@ -20,8 +20,8 @@ public abstract class EstoqueServices {
 
 	public static void exibirProduto(Produto produto) {
 		if (produto != null) {
-			out.format("%-5s %-30s %-10s %-10s", "ID", "PRODUTO", "PREÇO", "QUANTIDADE");
-			out.format("\n%-5s %-30s %-10s %-10s", produto.getId(), produto.getNome(),
+			out.format("\n%-5s %-30s %-10s %-10s", "ID", "PRODUTO", "PREÇO", "QUANTIDADE");
+			out.format("\n%-5s %-30s %-10s %-10s\n", produto.getId(), produto.getNome(),
 			           produto.getPreco(),
 			           produto.getQuantidadeEmEstoque());
 		} else {

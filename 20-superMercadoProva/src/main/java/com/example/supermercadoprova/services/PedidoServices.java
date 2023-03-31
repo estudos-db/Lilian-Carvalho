@@ -78,8 +78,6 @@ public abstract class PedidoServices {
 		}
 		int index = 0;
 		for (int contQuantidade : quantidadeNotas) {
-			out.println("contQuantidade: " + contQuantidade);
-			out.println("index: " + index);
 			if (contQuantidade > 0) {
 				result.append(contQuantidade)
 				      .append(" nota(s) de R$ ")
@@ -111,8 +109,6 @@ public abstract class PedidoServices {
 		}
 		int index = 0;
 		for (int contQuantidade : quantidadeMoedas) {
-			out.println("contQuantidade 2: " + contQuantidade);
-			out.println("index 2: " + index);
 			if (contQuantidade > 0) {
 				result.append(contQuantidade)
 				      .append(" moeda(s) de ")

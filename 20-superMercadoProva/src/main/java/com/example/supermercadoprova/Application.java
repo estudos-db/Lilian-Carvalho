@@ -24,8 +24,8 @@ public class Application {
 		EstoqueServices.cadastrarProduto(foneDeOuvido);
 		EstoqueServices.cadastrarProduto(mouse);
 		EstoqueServices.imprimirCatalagoDoEstoque();
-		System.out.println("\n" + EstoqueServices.encontraProdutoNome("Fone de Ouvido").getPreco());
-		System.out.println(EstoqueServices.encontraProdutoID(2).getNome());
+		EstoqueServices.exibirProduto(EstoqueServices.encontraProdutoNome("Fone de Ouvido"));
+		EstoqueServices.exibirProduto(EstoqueServices.encontraProdutoID(2));
 		System.out.println(EstoqueServices.darBaixaEmEstoquePeloNome("Mouse", 1));
 		System.out.println(EstoqueServices.darBaixaEmEstoquePeloNome("Mouse", 3));
 		System.out.println(EstoqueServices.darBaixaEmEstoquePeloID(1, 7));
