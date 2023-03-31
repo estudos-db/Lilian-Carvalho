@@ -1,6 +1,5 @@
 package com.example.supermercadoprova.services;
 
-import static java.lang.System.in;
 import static java.lang.System.out;
 
 import com.example.supermercadoprova.model.Item;
@@ -8,12 +7,10 @@ import com.example.supermercadoprova.model.Pedido;
 import com.example.supermercadoprova.model.Produto;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.util.Scanner;
 
 public abstract class PedidoServices {
 
 	private static final Pedido pedido = new Pedido();
-	static Scanner scanner = new Scanner(in);
 
 	public static double calcularValorTotal() {
 		double valorTotalDoPedido = pedido.getListaDeItens()
@@ -130,26 +127,5 @@ public abstract class PedidoServices {
 	public static Pedido getPedido() {
 		return pedido;
 	}
-
-	public static boolean adicionaItem() {
-		String nomeDoProduto = recebeNomeDoTeclado();
-		Produto produto = EstoqueServices.encontraProdutoNome(nomeDoProduto);
-		int quantidade = recebeQuantidadeDoTeclado();
-		if (produto.getQuantidadeEmEstoque() >= quantidade) {
-			return pedido.getListaDeItens().add(new Item(produto, quantidade, produto.getPreco()));
-		} else {
-			return false;
-		}
-	}
-
-	public static String recebeNomeDoTeclado() {
-		out.print("Informe o nome do produto: ");
-		return scanner.nextLine();
-	}
-
-	public static int recebeQuantidadeDoTeclado() {
-		out.print("Informe a quantidade de produtos: ");
-		return scanner.nextInt();
-	}
-
+	
 }
