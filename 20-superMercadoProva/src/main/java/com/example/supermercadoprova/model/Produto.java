@@ -8,10 +8,6 @@ public class Produto {
 	private double preco;
 	private int quantidadeEmEstoque;
 
-	public void setQuantidadeEmEstoque(int quantidadeEmEstoque) {
-		this.quantidadeEmEstoque = quantidadeEmEstoque;
-	}
-
 	public Produto(String nome, double preco, int quantidadeEmEstoque) {
 		this.nome = nome;
 		this.preco = preco;
@@ -33,5 +29,9 @@ public class Produto {
 
 	public double getPreco() {
 		return preco;
+	}
+
+	public void setQuantidadeEmEstoque(int quantidadeEmEstoque) {
+		this.quantidadeEmEstoque = quantidadeEmEstoque;
 	}
 }
