@@ -127,5 +127,10 @@ public abstract class PedidoServices {
 	public static Pedido getPedido() {
 		return pedido;
 	}
-	
+
+	public static void finalizarPedido() {
+		pedido.getListaDeItens()
+		      .forEach(item -> EstoqueServices.darBaixaEmEstoquePeloNome(item.getProduto().getNome(),
+		                                                                 item.getQuantidade()));
+	}
 }
