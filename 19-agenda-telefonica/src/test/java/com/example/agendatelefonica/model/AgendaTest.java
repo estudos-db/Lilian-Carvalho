@@ -2,15 +2,30 @@ package com.example.agendatelefonica.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Set;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class AgendaTest {
 
 	private Contato contatoTeste = new Contato("Ester Elza", "82996345148");
+
+	@Test
+	@DisplayName("Deve retornar os contatos cadastrados na agenda")
+	void listarContatos() {
+		Agenda.adicionarContato(contatoTeste);
+		Set<Contato> contatosCadastrados = Agenda.listarContatos();
+
+		contatosCadastrados.forEach(contato -> {
+			assertEquals("Ester Elza", contato.getNome());
+			assertEquals("82996345148", contato.getNumeroContato());
+		});
+		assertEquals(1, contatosCadastrados.size());
+	}
 
 	@Test
 	@DisplayName("Adiciona um novo contato na agenda")

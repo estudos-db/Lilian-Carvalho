@@ -1,7 +1,6 @@
 package com.example.agendatelefonica.model;
 
 import java.util.HashSet;
-import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Set;
 
@@ -9,7 +8,11 @@ public abstract class Agenda {
 
 	private static final Set<Contato> contatosCadastrados = new HashSet<>();
 
-	public static void listarContatos() {
+	public static Set<Contato> listarContatos() {
+		return contatosCadastrados;
+	}
+
+	public static void exibirContatos() {
 		if (contatosCadastrados.isEmpty()) {
 			System.out.println("Nenhum contato cadastrado!");
 		} else {
@@ -24,17 +27,10 @@ public abstract class Agenda {
 	}
 
 	public static Contato buscaContato(String nome) {
-		try {
-			return contatosCadastrados.stream()
-			                          .filter(contato -> Objects.equals(contato.getNome(), nome))
-			                          .findFirst()
-			                          .orElseThrow();
-		} catch (NoSuchElementException exception) {
-			System.out.println("\nContato não existe na agenda!");
-			return null;
-		}
-
-
+		return contatosCadastrados.stream()
+		                          .filter(contato -> Objects.equals(contato.getNome(), nome))
+		                          .findFirst()
+		                          .orElse(null);
 	}
 
 	public static boolean removerContato(String nome) {
