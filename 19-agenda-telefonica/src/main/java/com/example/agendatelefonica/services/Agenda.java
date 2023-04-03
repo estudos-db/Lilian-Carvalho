@@ -1,5 +1,8 @@
-package com.example.agendatelefonica.model;
+package com.example.agendatelefonica.services;
 
+import static java.lang.System.out;
+
+import com.example.agendatelefonica.model.Contato;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -14,10 +17,10 @@ public abstract class Agenda {
 
 	public static void exibirContatos() {
 		if (contatosCadastrados.isEmpty()) {
-			System.out.println("Nenhum contato cadastrado!");
+			out.print("Nenhum contato cadastrado!\n");
 		} else {
-			System.out.format("%-30s%-13s", "\nNOME", " CONTATO");
-			contatosCadastrados.forEach(contato -> System.out.format("\n%-30s%-13s", contato.getNome(),
+			out.format("%-30s%-13s", "\nNOME", " CONTATO");
+			contatosCadastrados.forEach(contato -> out.format("\n%-30s%-13s", contato.getNome(),
 			                                                         contato.getNumeroContato()));
 		}
 	}
