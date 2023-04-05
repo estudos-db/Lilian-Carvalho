@@ -3,12 +3,14 @@ package com.example.supermercadoprova;
 import com.example.supermercadoprova.model.Produto;
 import com.example.supermercadoprova.services.EstoqueServices;
 import com.example.supermercadoprova.services.PedidoServices;
+import java.util.Locale;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class Application {
 
 	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
 		Produto foneDeOuvido = new Produto("Fone de Ouvido", 98.45, 9);
 		Produto mouse = new Produto("Mouse", 28.21, 3);
 
