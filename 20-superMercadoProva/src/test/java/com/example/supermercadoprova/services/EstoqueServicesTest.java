@@ -1,16 +1,14 @@
 package com.example.supermercadoprova.services;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.example.supermercadoprova.model.Estoque;
 import com.example.supermercadoprova.model.Produto;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -24,16 +22,14 @@ class EstoqueServicesTest {
 		EstoqueServices.cadastrarProduto(teclado);
 		EstoqueServices.cadastrarProduto(mouse);
 	}
+
 	@Test
 	@DisplayName("Deve buscar um produto na lista pelo nome")
 	void encontraProdutoNome() {
 		Produto actual = EstoqueServices.encontraProdutoNome("Teclado");
 
 		assertNotNull(actual);
-		assertEquals(1, actual.getId());
-		assertEquals("Teclado", actual.getNome());
-		assertEquals(48.96, actual.getPreco());
-		assertEquals(25, actual.getQuantidadeEmEstoque());
+		assertThat(teclado).usingRecursiveComparison().isEqualTo(actual);
 	}
 
 	@Test
@@ -50,10 +46,7 @@ class EstoqueServicesTest {
 		Produto actual = EstoqueServices.encontraProdutoID(2);
 
 		assertNotNull(actual);
-		assertEquals(2, actual.getId());
-		assertEquals("Mouse", actual.getNome());
-		assertEquals(27.69, actual.getPreco());
-		assertEquals(8, actual.getQuantidadeEmEstoque());
+		assertThat(mouse).usingRecursiveComparison().isEqualTo(actual);
 	}
 
 	@Test
@@ -66,13 +59,11 @@ class EstoqueServicesTest {
 	@DisplayName("Deve cadastrar um novo produto no estoque")
 	void cadastrarProduto() {
 		assertNull(EstoqueServices.encontraProdutoNome("Fone de ouvido"));
-		EstoqueServices.cadastrarProduto(new Produto("Fone de ouvido", 36.58, 13));
+		Produto foneDeOuvido = new Produto("Fone de ouvido", 36.58, 13);
+		EstoqueServices.cadastrarProduto(foneDeOuvido);
 		Produto actual = EstoqueServices.encontraProdutoNome("Fone de ouvido");
 		assertNotNull(actual);
-		assertEquals(3, actual.getId());
-		assertEquals("Fone de ouvido", actual.getNome());
-		assertEquals(36.58, actual.getPreco());
-		assertEquals(13, actual.getQuantidadeEmEstoque());
+		assertThat(foneDeOuvido).usingRecursiveComparison().isEqualTo(actual);
 	}
 
 	@Test
@@ -119,9 +110,7 @@ class EstoqueServicesTest {
 	@Test
 	@DisplayName("Deve retornar a posição do produto no estoque")
 	void getPosicaoDoProdutoNaLista() {
-		int actual = EstoqueServices.getPosicaoDoProdutoNaLista(teclado);
-		System.out.println(actual);
-
+		assertEquals(0, EstoqueServices.getPosicaoDoProdutoNaLista(teclado));
 		assertEquals(1, EstoqueServices.getPosicaoDoProdutoNaLista(mouse));
 	}
 
