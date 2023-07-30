@@ -36,8 +36,10 @@ class CalculadoraTest {
 
 	@Test
 	void deveCalcularPotenciaDaBasSobExpoenteInformado() {
+
 		double actual = Calculadora.calcularPotencia(2, 3);
 
 		assertEquals(8.0, actual);
+
 	}
 }
